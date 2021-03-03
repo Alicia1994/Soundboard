@@ -30,16 +30,18 @@ export function clicButton() {
         let target = event.target;
         let id = target.getAttribute("id");
         let audio = document.getElementById(id);
-        if (!audio) return;
         if (audio) {
             let nextSibling = audio.nextElementSibling;
-            audio.currentTime = 0;
             nextSibling.play();
+            nextSibling.currentTime = 0;
             target.classList.add("sound-active");
 
             nextSibling.addEventListener("ended", (event) => {
                 target.classList.remove("sound-active");
             })
+            
+        } else {
+            return
         }
     })
 
